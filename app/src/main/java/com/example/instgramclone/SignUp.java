@@ -2,6 +2,7 @@ package com.example.instgramclone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +22,7 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 import java.util.List;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
-    private Button btnSave, btnGetAllData;
+    private Button btnSave, btnGetAllData, btnTransition;
     private EditText edtName, edtPunchSpeed, edtPunchPower, edtKickSpeed, edtKickPower;
     private TextView txtGetData;
     private String allKickBoxer;
@@ -38,10 +39,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         edtKickPower = findViewById(R.id.edtKickPower);
         txtGetData = findViewById(R.id.txtGetData);
         btnGetAllData = findViewById(R.id.btnGetAllData);
+        btnTransition = findViewById(R.id.btnNextActivity);
 
         btnSave.setOnClickListener(SignUp.this);
         txtGetData.setOnClickListener(SignUp.this);
         btnGetAllData.setOnClickListener(SignUp.this);
+        btnTransition.setOnClickListener(SignUp.this);
     }
 
 
@@ -84,6 +87,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             case R.id.btnGetAllData:
                 allKickBoxer = "";
                 ParseQuery<ParseObject> queryAll = ParseQuery.getQuery("KickBoxer");
+                //set condition
+                //queryAll.whereGreaterThan("punchPower", 1000);
+                queryAll.whereGreaterThanOrEqualTo("punchPower", 400);
+                queryAll.setLimit(1);
                 queryAll.findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> objects, ParseException e) {
@@ -101,6 +108,9 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                     }
                 });
                 break;
+            case R.id.btnNextActivity:
+                Intent intent = new Intent(SignUp.this, SignUpLoginActivity.class);
+                startActivity(intent);
         }
     }
 }
