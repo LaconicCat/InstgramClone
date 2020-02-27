@@ -76,7 +76,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/success_shape"
-        android:text="login up"
+        android:text="login in"
         android:textColor="@android:color/background_light"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
