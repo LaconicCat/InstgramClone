@@ -7,11 +7,12 @@
     android:layout_centerInParent="false"
     android:layout_centerHorizontal="false"
     android:layout_centerVertical="false"
+    android:layout_gravity="center"
     android:onClick="rootLayoutTapped"
     tools:context=".SignUpActivity">
 
     <EditText
-        android:id="@+id/edtEnterEmail"
+        android:id="@+id/edtEnterEmailLogin"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
@@ -22,23 +23,10 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/imgIcon" />
+        app:layout_constraintTop_toBottomOf="@+id/imgIconLogin" />
 
     <EditText
-        android:id="@+id/edtEnterUserName"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="0dp"
-        android:background="@android:drawable/edit_text"
-        android:hint="Username"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/edtEnterEmail" />
-
-    <EditText
-        android:id="@+id/edtEnterPassword"
+        android:id="@+id/edtEnterPasswordLogin"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="@android:drawable/edit_text"
@@ -48,13 +36,13 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/edtEnterUserName" />
+        app:layout_constraintTop_toBottomOf="@+id/edtEnterEmailLogin" />
 
     <Button
-        android:id="@+id/btnSignUp"
+        android:id="@+id/btnSignUpLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/info_shape"
         android:text="Sign up"
         android:textColor="@android:color/background_light"
@@ -62,13 +50,12 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/edtEnterPassword" />
+        app:layout_constraintTop_toBottomOf="@id/btnLoginInLogin" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnLoginInLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:background="@drawable/warning_shape"
         android:text="Login"
         android:textColor="@android:color/background_light"
@@ -76,15 +63,15 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
+        app:layout_constraintTop_toBottomOf="@+id/edtEnterPasswordLogin" />
 
     <ImageView
-        android:id="@+id/imgIcon"
+        android:id="@+id/imgIconLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
         app:srcCompat="@drawable/icon" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -102,11 +89,10 @@
         app:layout_constraintGuide_end="40dp" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
+        android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.18" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
