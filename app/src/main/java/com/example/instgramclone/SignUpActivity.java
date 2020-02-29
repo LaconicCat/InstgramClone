@@ -97,8 +97,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 });
                 break;
             case R.id.btnLogin:
-                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-                startActivity(intent);
+                transitionToSocialMediaActivity();
                 break;
         }
     }
