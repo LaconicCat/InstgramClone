@@ -11,12 +11,14 @@ import android.widget.EditText;
 
 import com.parse.LogInCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText edtEmailLogin, edtPasswordLogin;
     private Button btnSignUpLogin, btnLoginInLogin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,18 +32,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnSignUpLogin.setOnClickListener(LoginActivity.this);
         btnLoginInLogin.setOnClickListener(LoginActivity.this);
 
-        if (ParseUser.getCurrentUser() != null){
-            ParseUser.getCurrentUser().logOut();
+        if (ParseUser.getCurrentUser() != null) {
+            //ParseUser.getCurrentUser().logOut();
+            transitionToSocialMediaActivity();
         }
+
 
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btnLoginInLogin:
                 if (edtEmailLogin.getText().toString().equals("") ||
-                        edtPasswordLogin.getText().toString().equals("")){
+                        edtPasswordLogin.getText().toString().equals("")) {
                     FancyToast.makeText(LoginActivity.this, "Email, Password is required!",
                             FancyToast.LENGTH_SHORT, FancyToast.INFO, true).show();
                     break;
@@ -50,10 +54,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         new LogInCallback() {
                             @Override
                             public void done(ParseUser user, ParseException e) {
-                                if(e == null && user != null){
-                                    FancyToast.makeText(LoginActivity.this, user.getUsername()+" is Logged in.",
+                                if (e == null && user != null) {
+                                    FancyToast.makeText(LoginActivity.this, user.getUsername() + " is Logged in.",
                                             FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
-                                }else {
+                                    transitionToSocialMediaActivity();
+                                } else {
                                     FancyToast.makeText(LoginActivity.this, "Error" + e.getMessage(),
                                             FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
                                 }
@@ -67,13 +72,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void rootLayoutTapped(View view){
+    public void rootLayoutTapped(View view) {
         try {
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
-        } catch (Exception e){
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        } catch (Exception e) {
             e.printStackTrace(); //to the log
         }
 
+    }
+
+    private void transitionToSocialMediaActivity() {
+        Intent intent = new Intent(LoginActivity.this, SocialMediaActivity.class);
+        startActivity(intent);
     }
 }

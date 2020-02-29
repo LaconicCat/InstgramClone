@@ -87,6 +87,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                         if(e == null){
                             FancyToast.makeText(SignUpActivity.this, appUser.getUsername()+" is signed up.",
                                     FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+                            transitionToSocialMediaActivity();
                         }else {
                             FancyToast.makeText(SignUpActivity.this, "Error" + e.getMessage(),
                                     FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
@@ -100,5 +101,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(intent);
                 break;
         }
+    }
+
+    private void transitionToSocialMediaActivity(){
+        Intent intent = new Intent(SignUpActivity.this, SocialMediaActivity.class);
+        startActivity(intent);
     }
 }
